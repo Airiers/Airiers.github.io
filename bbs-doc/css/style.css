@@ -121,3 +121,20 @@ p {
     transform: scale(1.07);
     transition: transform 0.1s;
 }
+
+@media (max-width: 1180px) {
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 15px;
+    }
+}
+@media (max-width: 740px) {
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(1, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
