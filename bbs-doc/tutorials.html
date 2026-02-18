@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Tutorials</title>
+        <link rel="stylesheet" href="/bbs-doc/css/style.css" />
+        <link
+            rel="shortcut icon"
+            href="/bbs-doc/src/favicon.ico"
+            type="image/x-icon"
+        />
+    </head>
+    <body>
+        <div id="header"></div>
+        <script src="/bbs-doc/js/header.js"></script>
+        <div class="main">
+            <h1>Tutorials</h1>
+
+            <!-- Filtres combinés -->
+            <div id="filters" style="margin-bottom: 15px">
+                <label for="authorFilter">Author :</label>
+                <select id="authorFilter">
+                    <option value="all">All</option>
+                </select>
+
+                <label for="languageFilter" style="margin-left: 10px"
+                    >Language :</label
+                >
+                <select id="languageFilter">
+                    <option value="all">All</option>
+                </select>
+            </div>
+
+            <div class="grid" id="tutorialsGrid"></div>
+        </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", () => {
+                fetch("../bbs-doc/data/tutorials.json")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        const grid = document.getElementById("tutorialsGrid");
+                        const authorFilter =
+                            document.getElementById("authorFilter");
+                        const languageFilter =
+                            document.getElementById("languageFilter");
+
+                        function getYoutubeId(url) {
+                            const urlObj = new URL(url);
+                            return urlObj.searchParams.get("v");
+                        }
+
+                        function displayTutorials(tutos) {
+                            grid.innerHTML = "";
+                            tutos.forEach((tuto) => {
+                                const youtubeId = getYoutubeId(tuto.url);
+                                if (!youtubeId) return;
+
+                                const tutoDiv = document.createElement("div");
+                                tutoDiv.classList.add("tuto");
+
+                                const title = document.createElement("h2");
+                                title.textContent = tuto.title;
+                                title.title = tuto.title;
+
+                                const img = document.createElement("img");
+                                img.src = `https://img.youtube.com/vi/${youtubeId}/maxresdefault.jpg`;
+                                img.alt = tuto.title;
+
+                                const link = document.createElement("a");
+                                link.href = tuto.url;
+                                link.target = "_blank";
+
+                                tutoDiv.appendChild(title);
+                                tutoDiv.appendChild(img);
+                                link.appendChild(tutoDiv);
+                                grid.appendChild(link);
+                            });
+                        }
+
+                        // Remplir les options de filtre
+                        const authors = [...new Set(data.map((t) => t.author))];
+                        authors.forEach((a) => {
+                            const option = document.createElement("option");
+                            option.value = a;
+                            option.textContent = a;
+                            authorFilter.appendChild(option);
+                        });
+
+                        const languages = [
+                            ...new Set(data.map((t) => t.language)),
+                        ];
+                        languages.forEach((l) => {
+                            const option = document.createElement("option");
+                            option.value = l;
+                            option.textContent = l;
+                            languageFilter.appendChild(option);
+                        });
+
+                        function applyFilters() {
+                            let filtered = data;
+                            const selectedAuthor = authorFilter.value;
+                            const selectedLanguage = languageFilter.value;
+
+                            if (selectedAuthor !== "all") {
+                                filtered = filtered.filter(
+                                    (t) => t.author === selectedAuthor,
+                                );
+                            }
+                            if (selectedLanguage !== "all") {
+                                filtered = filtered.filter(
+                                    (t) => t.language === selectedLanguage,
+                                );
+                            }
+
+                            displayTutorials(filtered);
+                        }
+
+                        // Événements des filtres
+                        authorFilter.addEventListener("change", applyFilters);
+                        languageFilter.addEventListener("change", applyFilters);
+
+                        // Affichage initial
+                        displayTutorials(data);
+                    })
+                    .catch((error) =>
+                        console.error("Erreur de chargement JSON :", error),
+                    );
+            });
+        </script>
+    </body>
+</html>

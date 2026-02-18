@@ -1,10 +1,10 @@
 * {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    overflow: hidden;
     font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
     background-color: rgb(12, 12, 12);
     color: #d8d8d8;
@@ -38,10 +38,18 @@ body {
 
 .main h1 {
     display: flex;
+    margin-bottom: 10px;
 }
 
 .text {
     margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.text iframe {
+    margin-top: 40px;
 }
 
 header {
@@ -70,4 +78,45 @@ header a:hover {
 
 p {
     margin-top: 20px;
+}
+
+.grid {
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+.tuto {
+    background-color: rgb(17, 16, 16);
+    padding: 20px;
+    font-size: 12px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    border: solid 3px #3a3939;
+    overflow: hidden;
+}
+
+.tuto img {
+    width: 100%;
+}
+
+.tuto > h2 {
+    margin-bottom: 5px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%; /* ou max-width: 100%; */
+}
+.grid a {
+    text-decoration: none;
+    color: rgb(216, 216, 216);
+    transform: scale(1);
+    transition: transform 0.1s;
+}
+.grid a:hover {
+    transform: scale(1.07);
+    transition: transform 0.1s;
 }
