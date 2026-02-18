@@ -15,7 +15,7 @@
         <div id="header"></div>
         <script src="/bbs-doc/js/header.js"></script>
         <div class="main">
-            <h1>Tutorials</h1>
+            <h1>Tutorials (<span id="counter">0</span>)</h1>
 
             <!-- Filtres combinés -->
             <div id="filters" style="margin-bottom: 15px">
@@ -30,6 +30,19 @@
                 <select id="languageFilter">
                     <option value="all">All</option>
                 </select>
+
+                <label for="searchInput" style="margin-left: 10px"
+                    >Search :</label
+                >
+                <input
+                    type="text"
+                    id="searchInput"
+                    placeholder="Search a tutorial"
+                />
+
+                <button id="resetFilters" style="margin-left: 10px">
+                    Reset
+                </button>
             </div>
 
             <div class="grid" id="tutorialsGrid"></div>
@@ -45,6 +58,10 @@
                             document.getElementById("authorFilter");
                         const languageFilter =
                             document.getElementById("languageFilter");
+                        const searchInput =
+                            document.getElementById("searchInput");
+                        const resetButton =
+                            document.getElementById("resetFilters");
 
                         function getYoutubeId(url) {
                             const urlObj = new URL(url);
@@ -53,6 +70,14 @@
 
                         function displayTutorials(tutos) {
                             grid.innerHTML = "";
+                            if (tutos.length === 0) {
+                                grid.textContent = "Aucun tutoriel trouvé.";
+                                let counter =
+                                    document.getElementById("counter");
+                                counter.innerText = 0;
+                                return;
+                            }
+                            let number = 0;
                             tutos.forEach((tuto) => {
                                 const youtubeId = getYoutubeId(tuto.url);
                                 if (!youtubeId) return;
@@ -76,7 +101,10 @@
                                 tutoDiv.appendChild(img);
                                 link.appendChild(tutoDiv);
                                 grid.appendChild(link);
+                                number += 1;
                             });
+                            let counter = document.getElementById("counter");
+                            counter.innerText = number;
                         }
 
                         // Remplir les options de filtre
@@ -99,9 +127,11 @@
                         });
 
                         function applyFilters() {
-                            let filtered = data;
                             const selectedAuthor = authorFilter.value;
                             const selectedLanguage = languageFilter.value;
+                            const searchText = searchInput.value.toLowerCase();
+
+                            let filtered = data;
 
                             if (selectedAuthor !== "all") {
                                 filtered = filtered.filter(
@@ -113,13 +143,26 @@
                                     (t) => t.language === selectedLanguage,
                                 );
                             }
+                            if (searchText) {
+                                filtered = filtered.filter((t) =>
+                                    t.title.toLowerCase().includes(searchText),
+                                );
+                            }
 
                             displayTutorials(filtered);
                         }
 
-                        // Événements des filtres
+                        // Événements
                         authorFilter.addEventListener("change", applyFilters);
                         languageFilter.addEventListener("change", applyFilters);
+                        searchInput.addEventListener("input", applyFilters);
+
+                        resetButton.addEventListener("click", () => {
+                            authorFilter.value = "all";
+                            languageFilter.value = "all";
+                            searchInput.value = "";
+                            displayTutorials(data);
+                        });
 
                         // Affichage initial
                         displayTutorials(data);
