@@ -109,7 +109,8 @@ p {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 100%; /* ou max-width: 100%; */
+    width: 100%;
+    font-size: 17px;
 }
 .grid a {
     text-decoration: none;
@@ -122,6 +123,23 @@ p {
     transition: transform 0.1s;
 }
 
+@media (max-width: 2530px) {
+    .tuto > h2 {
+        font-size: 20px;
+    }
+}
+
+@media (max-width: 1500px) {
+    .main {
+        padding: 20px;
+        margin-top: 15px;
+        width: 75%;
+    }
+    .tuto > h2 {
+        font-size: 20px;
+    }
+}
+
 @media (max-width: 1180px) {
     .grid {
         width: 100%;
@@ -129,12 +147,114 @@ p {
         grid-template-columns: repeat(2, minmax(0, 1fr));
         gap: 15px;
     }
+    header {
+        font-size: 20px;
+    }
 }
+
+@media (max-width: 960px) {
+    header {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 770px) {
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+    .main {
+        padding: 20px;
+        margin-top: 10px;
+        width: 80%;
+    }
+}
+
 @media (max-width: 740px) {
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+
+@media (max-width: 630px) {
     .grid {
         width: 100%;
         display: grid;
         grid-template-columns: repeat(1, minmax(0, 1fr));
         gap: 10px;
+    }
+}
+
+@media (max-width: 510px) {
+    .main {
+        padding: 15px;
+        margin-top: 5px;
+        width: 90%;
+    }
+    .main h1 {
+        font-size: 25px;
+    }
+}
+
+/* NAV DESKTOP */
+.nav-links {
+    display: flex;
+    gap: 20px;
+}
+
+.burger {
+    display: none;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+/* SIDEBAR */
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100%;
+    background-color: rgb(20, 20, 20);
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: left 0.3s ease;
+    z-index: 1000;
+}
+
+.sidebar a {
+    padding: 15px 25px;
+    text-decoration: none;
+    color: #d8d8d8;
+    font-size: 18px;
+}
+
+.sidebar a:hover {
+    background-color: rgb(35, 35, 35);
+}
+
+/* SIDEBAR ACTIVE */
+.sidebar.active {
+    left: 0;
+}
+
+@media (max-width: 830px) {
+    .nav-links {
+        display: none; /* cache les liens */
+    }
+
+    .burger {
+        display: block; /* affiche le burger */
+    }
+
+    header {
+        justify-content: space-between;
+        padding: 20px 30px;
     }
 }
