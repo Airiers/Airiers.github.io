@@ -39,7 +39,12 @@ body {
 
 .main h1 {
     display: flex;
+    align-items: center;
     margin-bottom: 10px;
+}
+
+.main h1 img {
+    margin-left: 5px;
 }
 
 .text {
@@ -49,8 +54,18 @@ body {
     align-items: flex-start;
 }
 
-.text iframe {
-    margin-top: 40px;
+.iframe_container {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    margin: 20px 0 0 0;
+}
+
+.iframe_container iframe {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
 }
 
 header {
@@ -79,6 +94,24 @@ header a:hover {
 
 p {
     margin-top: 20px;
+}
+
+select,
+input,
+button {
+    background-color: rgb(32, 33, 37);
+    color: #d8d8d8;
+    border-radius: 20px;
+    padding: 10px;
+    border-color: rgb(58, 57, 57);
+    border-style: solid;
+}
+
+button:hover {
+    background-color: #3a3939;
+}
+button:active {
+    background-color: #5e5e5e;
 }
 
 .grid {
@@ -204,7 +237,7 @@ p {
 /* NAV DESKTOP */
 .nav-links {
     display: flex;
-    gap: 20px;
+    gap: 30px;
 }
 
 .burger {
