@@ -8,6 +8,7 @@ interface Movie {
     tagline: string;
     runtime: string;
     vote_average: string;
+    backdrop_path: string;
     belongs_to_collection: { id: string; name: string };
     genres: [];
 }
@@ -58,8 +59,7 @@ function putInfos(movie: Movie) {
         overview.textContent = movie.overview;
     }
     if (body) {
-        body.style.backgroundImage =
-            "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://image.tmdb.org/t/p/original/cKvDv2LpwVEqbdXWoQl4XgGN6le.jpg')";
+        body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`;
         body.style.backgroundSize = "cover";
         body.style.backgroundPosition = "center center";
         body.style.backgroundAttachment = "fixed";

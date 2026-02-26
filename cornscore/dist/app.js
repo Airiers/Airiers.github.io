@@ -32,8 +32,7 @@ function putInfos(movie) {
         overview.textContent = movie.overview;
     }
     if (body) {
-        body.style.backgroundImage =
-            "linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://image.tmdb.org/t/p/original/cKvDv2LpwVEqbdXWoQl4XgGN6le.jpg')";
+        body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`;
         body.style.backgroundSize = "cover";
         body.style.backgroundPosition = "center center";
         body.style.backgroundAttachment = "fixed";
