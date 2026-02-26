@@ -3,9 +3,14 @@
         "rootDir": "./src",
         "outDir": "./dist",
         "target": "es2015",
+        "module": "commonjs",
         "noEmitOnError": true,
         "strict": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "types": ["node"],
         "forceConsistentCasingInFileNames": true
     },
-    "files": ["src/app.ts"]
+    "include": ["src/**/*.ts"],
+    "exclude": ["node_modules"]
 }

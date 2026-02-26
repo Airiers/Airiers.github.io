@@ -1,6 +1,4 @@
 togit.txt
 .editorconfig
 .vscode
-Gemfile
-Gemfile.lock
-.jekyll-cache
+/cornscore/.env

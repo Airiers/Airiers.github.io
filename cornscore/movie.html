@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Movie</title>
+        <script src="dist/app.js" defer></script>
+        <link rel="stylesheet" href="src/style.css" />
+    </head>
+    <body>
+        <main>
+            <div class="moviePoster">
+                <h1 id="title">Movie</h1>
+                <img id="poster" src="" alt="" width="450px" />
+            </div>
+            <div class="movieInfos">
+                <section>
+                    <blockquote id="tagline"></blockquote>
+                </section>
+                <section>
+                    <h2>Synopsis</h2>
+                    <p id="overview"></p>
+                </section>
+                <hr />
+                <div class="other">
+                    <section>
+                        <h2>Durée</h2>
+                        <p id="runtime"></p>
+                    </section>
+                    <section>
+                        <h2>Note</h2>
+                        <p id="vote_average"></p>
+                    </section>
+                    <section>
+                        <h2>Genres</h2>
+                        <div id="genres"></div>
+                    </section>
+                </div>
+                <hr />
+                <section>
+                    <h2 id="collectionTitle">Collection</h2>
+                    <div id="collection"></div>
+                </section>
+            </div>
+        </main>
+        <h1>Films similaires</h1>
+        <div id="similar"></div>
+    </body>
+</html>
