@@ -56,7 +56,9 @@ function putInfos(movie: Movie) {
         poster.src = `https://image.tmdb.org/t/p/w500${movie.poster_path}`;
     }
     if (overview) {
-        overview.textContent = movie.overview;
+        if (movie.overview) {
+            overview.textContent = movie.overview;
+        }
     }
     if (body) {
         body.style.backgroundImage = `linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url("https://image.tmdb.org/t/p/original${movie.backdrop_path}")`;
@@ -65,7 +67,9 @@ function putInfos(movie: Movie) {
         body.style.backgroundAttachment = "fixed";
     }
     if (tagline) {
-        tagline.textContent = movie.tagline;
+        if (movie.tagline) {
+            tagline.textContent = movie.tagline;
+        }
     }
     if (runtime) {
         runtime.textContent = `${movie.runtime} minutes`;
@@ -78,23 +82,33 @@ function putInfos(movie: Movie) {
             genres.innerHTML += `<div>${genre.name}</div>`;
         });
     }
+    const collectionTitle = document.querySelector(
+        "#collectionTitle",
+    ) as HTMLElement;
+    if (movie.belongs_to_collection) {
+        fetch(
+            `https://api.themoviedb.org/3/collection/${movie.belongs_to_collection.id}?api_key=${TMDB_API_KEY}&language=fr-FR`,
+        )
+            .then((res) => {
+                return res.json();
+            })
+            .then((collection: Collection) => {
+                const collectionList = document.querySelector(
+                    "#collection",
+                ) as HTMLElement;
 
-    fetch(
-        `https://api.themoviedb.org/3/collection/${movie.belongs_to_collection.id}?api_key=${TMDB_API_KEY}&language=fr-FR`,
-    )
-        .then((res) => {
-            return res.json();
-        })
-        .then((collection: Collection) => {
-            const collectionTitle = document.querySelector("#collectionTitle");
-            const collectionList = document.querySelector("#collection");
-            if (collectionList && collectionTitle) {
-                collectionTitle.textContent = `Collection ${collection.name}`;
-                collection.parts.forEach((movie) => {
-                    collectionList.innerHTML += `<div class="otherMovie"><a href="?movie=${movie.id}"><h3>${movie.title}</h3><img src="${`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="${movie.title} poster" height="300px"></a></div>`;
-                });
-            }
-        });
+                if (collectionList && collectionTitle) {
+                    collectionTitle.textContent = `Collection ${collection.name}`;
+                    collection.parts.forEach((movie) => {
+                        collectionList.innerHTML += `<div class="otherMovie" title="${movie.title}"><a href="?movie=${movie.id}"><h3>${movie.title}</h3><img src="${`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="${movie.title} poster" height="300px"></a></div>`;
+                    });
+                }
+            });
+    } else {
+        if (collectionTitle) {
+            collectionTitle.style.display = "none";
+        }
+    }
     fetch(
         `https://api.themoviedb.org/3/movie/${movieId}/similar?api_key=${TMDB_API_KEY}&language=fr-FR`,
     )
@@ -105,7 +119,7 @@ function putInfos(movie: Movie) {
             const similarList = document.querySelector("#similar");
             if (similarList) {
                 similar.results.forEach((movie) => {
-                    similarList.innerHTML += `<div class="otherMovie"><a href="?movie=${movie.id}"><h3>${movie.title}</h3><img src="${`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="${movie.title} poster" height="300px"></a></div>`;
+                    similarList.innerHTML += `<div class="otherMovie" title="${movie.title}"><a href="?movie=${movie.id}"><h3>${movie.title}</h3><img src="${`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="${movie.title} poster" height="300px"></a></div>`;
                 });
             }
         });

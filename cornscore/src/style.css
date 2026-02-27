@@ -7,10 +7,10 @@
 body {
     background-color: var(--background);
     color: var(--textcolor);
+    overflow-x: hidden;
     font-family:
         "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
-    overflow-x: hidden;
 }
 
 p {
@@ -25,6 +25,7 @@ main {
     align-items: flex-start;
     gap: 30px;
     padding-top: 0;
+    width: 100%;
 }
 
 .moviePoster {
@@ -76,6 +77,7 @@ blockquote:after {
     align-items: flex-start;
     font-size: 20px;
     margin-top: 100px;
+    width: 800px;
 }
 
 .other {
@@ -117,10 +119,9 @@ blockquote:after {
     border-radius: 5px;
 }
 
-#collection {
-    display: flex;
-    flex-direction: row;
-    gap: 25px;
+h1 {
+    white-space: wrap;
+    width: 450px;
 }
 
 h2 {
@@ -143,15 +144,27 @@ a {
 }
 
 .otherMovie {
+    cursor: pointer;
+    width: 200px;
+    flex: 0 0 auto;
+    overflow: hidden;
+    text-overflow: clip;
+    white-space: nowrap;
     transform: scale(1);
     transition: transform 0.3s ease-out;
 }
+
 .otherMovie:hover {
     transform: scale(1.1);
 }
 
-#similar {
-    display: flex;
-    align-items: flex-end;
-    gap: 25px;
+.otherMovie {
+    scroll-snap-align: start;
+    flex: 0 0 180px; /* largeur fixe garantie */
+    width: 180px;
+}
+
+#collection {
+    max-width: calc(4 * (180px + 48px)); /* 4 cartes + leurs gaps */
+    overflow: hidden; /* remplace overflow-x: auto — le scroll se fait via JS */
 }

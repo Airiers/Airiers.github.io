@@ -4,24 +4,28 @@
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Movie</title>
-        <script src="dist/app.js" defer></script>
         <link rel="stylesheet" href="src/style.css" />
+        <script src="dist/app.js" defer></script>
     </head>
     <body>
         <main>
             <div class="moviePoster">
                 <h1 id="title">Movie</h1>
-                <img id="poster" src="" alt="" width="450px" />
+                <img id="poster" src="" alt="Affiche du film" width="450" />
             </div>
+
             <div class="movieInfos">
                 <section>
-                    <blockquote id="tagline"></blockquote>
+                    <blockquote id="tagline">
+                        Aucune réplique n'est disponible
+                    </blockquote>
                 </section>
+
                 <section>
                     <h2>Synopsis</h2>
-                    <p id="overview"></p>
+                    <p id="overview">Aucun synopsis n'est disponible</p>
                 </section>
-                <hr />
+
                 <div class="other">
                     <section>
                         <h2>Durée</h2>
@@ -36,14 +40,28 @@
                         <div id="genres"></div>
                     </section>
                 </div>
+
                 <hr />
-                <section>
+
+                <section style="width: 100%">
                     <h2 id="collectionTitle">Collection</h2>
-                    <div id="collection"></div>
+                    <div class="collection-wrapper">
+                        <button class="icon_left">&#10094;</button>
+                        <div id="collection"></div>
+                        <button class="icon_right">&#10095;</button>
+                    </div>
                 </section>
             </div>
         </main>
-        <h1>Films similaires</h1>
-        <div id="similar"></div>
+
+        <div id="similarElements">
+            <h1>Films similaires</h1>
+            <div class="similar-wrapper">
+                <button class="icon_left">&#10094;</button>
+                <div id="similar"></div>
+                <button class="icon_right">&#10095;</button>
+            </div>
+        </div>
+        <script src="slider.js"></script>
     </body>
 </html>
