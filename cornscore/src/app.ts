@@ -38,6 +38,7 @@ if (movieId) {
 }
 
 function putInfos(movie: Movie) {
+    const title = document.querySelector("title");
     const release_date = new Date(movie.release_date);
     const h1 = document.querySelector("#title");
     const poster = document.querySelector("#poster") as HTMLImageElement;
@@ -47,7 +48,9 @@ function putInfos(movie: Movie) {
     const runtime = document.querySelector("#runtime");
     const vote_average = document.querySelector("#vote_average");
     const genres = document.querySelector("#genres");
-
+    if (title) {
+        title.textContent = movie.title;
+    }
     if (h1) {
         h1.textContent = `${movie.title} (${release_date.getFullYear()})`;
     }

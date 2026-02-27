@@ -121,7 +121,7 @@ blockquote:after {
 
 h1 {
     white-space: wrap;
-    width: 450px;
+    width: calc(450px - 20px);
 }
 
 h2 {
