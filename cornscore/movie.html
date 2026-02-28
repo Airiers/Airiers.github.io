@@ -40,6 +40,13 @@
                         <div id="genres"></div>
                     </section>
                 </div>
+                <section>
+                    <div id="distributionHead">
+                        <h2>Distribution</h2>
+                        <button id="toggleActors">Voir plus</button>
+                    </div>
+                    <div id="actors"></div>
+                </section>
 
                 <hr />
 
@@ -63,5 +70,24 @@
             </div>
         </div>
         <script src="slider.js"></script>
+        <script>
+            const toggleBtn = document.querySelector("#toggleActors");
+
+            if (toggleBtn) {
+                toggleBtn.addEventListener("click", () => {
+                    const hiddenActors =
+                        document.querySelectorAll(".extraActor");
+
+                    hiddenActors.forEach((actor) => {
+                        actor.classList.toggle("hidden");
+                    });
+
+                    toggleBtn.textContent =
+                        toggleBtn.textContent === "Voir plus"
+                            ? "Voir moins"
+                            : "Voir plus";
+                });
+            }
+        </script>
     </body>
 </html>

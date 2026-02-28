@@ -92,4 +92,18 @@ function putInfos(movie) {
             });
         }
     });
+    fetch(`https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${TMDB_API_KEY}&language=fr-FR`)
+        .then((res) => {
+        return res.json();
+    })
+        .then((credits) => {
+        const actors = document.querySelector("#actors");
+        const toggleBtn = document.querySelector("#toggleActors");
+        if (actors) {
+            credits.cast.forEach((actor, index) => {
+                actors.innerHTML += `<a class="actorCard ${index >= 3 ? "extraActor hidden" : ""}" href="../cornscore/person.html?person${actor.id}"><img src="https://image.tmdb.org/t/p/original/${actor.profile_path}"><div class="names"><span class="actorName">${actor.name}</span><span class="actorCharacter">${actor.character}</span></div></a>`;
+                console.log(actor);
+            });
+        }
+    });
 }

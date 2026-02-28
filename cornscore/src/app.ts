@@ -22,6 +22,16 @@ interface Similar {
     results: Movie[];
 }
 
+interface CreditsCast {
+    id: string;
+    name: string;
+    profile_path: string;
+    character: string;
+}
+interface Credits {
+    cast: CreditsCast[];
+}
+
 const url = new URL(window.location.href);
 const movieId: string | null = url.searchParams.get("movie");
 
@@ -123,6 +133,23 @@ function putInfos(movie: Movie) {
             if (similarList) {
                 similar.results.forEach((movie) => {
                     similarList.innerHTML += `<div class="otherMovie" title="${movie.title}"><a href="?movie=${movie.id}"><h3>${movie.title}</h3><img src="${`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt="${movie.title} poster" height="300px"></a></div>`;
+                });
+            }
+        });
+
+    fetch(
+        `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${TMDB_API_KEY}&language=fr-FR`,
+    )
+        .then((res) => {
+            return res.json();
+        })
+        .then((credits: Credits) => {
+            const actors = document.querySelector("#actors");
+            const toggleBtn = document.querySelector("#toggleActors");
+            if (actors) {
+                credits.cast.forEach((actor, index) => {
+                    actors.innerHTML += `<a class="actorCard ${index >= 3 ? "extraActor hidden" : ""}" href="../cornscore/person.html?person${actor.id}"><img src="https://image.tmdb.org/t/p/original/${actor.profile_path}"><div class="names"><span class="actorName">${actor.name}</span><span class="actorCharacter">${actor.character}</span></div></a>`;
+                    console.log(actor);
                 });
             }
         });
