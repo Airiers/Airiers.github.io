@@ -1,5 +1,5 @@
 :root {
-    --background: #212121c0;
+    --background: #212121;
     --textcolor: #ececec;
     --maincolor: #d14c4c;
 }
@@ -7,10 +7,36 @@
 body {
     background-color: var(--background);
     color: var(--textcolor);
-    overflow-x: hidden;
+    margin: 0;
     font-family:
         "Lucida Sans", "Lucida Sans Regular", "Lucida Grande",
         "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+}
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+body::before {
+    background-image: var(--bg-current);
+    opacity: 1;
+}
+
+body::after {
+    background-image: var(--bg-next);
+    opacity: 0;
+    transition: opacity 0.6s ease;
+}
+
+body.transitioning::after {
+    opacity: 1;
 }
 
 p {
@@ -22,13 +48,35 @@ a {
 
 main {
     border-radius: 20px;
-    padding: 50px;
+    margin: 30px;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     gap: 30px;
-    padding-top: 0;
-    width: 100%;
+    margin-top: 10px;
+}
+
+header {
+    overflow-x: hidden;
+    height: 50px;
+    background-color: var(--maincolor);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+form {
+    height: 100%;
+}
+
+#searchbar {
+    width: 500px;
+    background-color: #212121;
+    border: solid 2px #686868;
+    border-radius: 20px;
+    padding: 15px 25px;
+    color: var(--textcolor);
 }
 
 .moviePoster {
@@ -172,8 +220,8 @@ a {
     overflow: hidden; /* remplace overflow-x: auto — le scroll se fait via JS */
 }
 
-#similar {
-    margin: 10px;
+#similarElements h1 {
+    margin-left: 20px;
 }
 
 #actors {
@@ -238,4 +286,17 @@ a {
     color: var(--maincolor);
     font-size: 18px;
     cursor: pointer;
+}
+
+#results {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 30px;
+    padding: 20px;
+}
+
+.result {
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }

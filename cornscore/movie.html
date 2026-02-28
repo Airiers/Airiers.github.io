@@ -8,6 +8,16 @@
         <script src="dist/app.js" defer></script>
     </head>
     <body>
+        <header>
+            <form action="search.html" method="GET">
+                <input
+                    type="text"
+                    name="query"
+                    id="searchbar"
+                    placeholder="Nom d'un film ou d'un acteur"
+                />
+            </form>
+        </header>
         <main>
             <div class="moviePoster">
                 <h1 id="title">Movie</h1>
@@ -62,7 +72,7 @@
         </main>
 
         <div id="similarElements">
-            <h1>Films similaires</h1>
+            <h1 id="similarHead">Films similaires</h1>
             <div class="similar-wrapper">
                 <button class="icon_left">&#10094;</button>
                 <div id="similar"></div>

@@ -25,12 +25,15 @@ function initSlider(wrapper) {
   // Show/hide arrows based on scroll position
   const updateArrows = () => {
     const { scrollLeft, scrollWidth, clientWidth } = track;
-    btnLeft.style.opacity = scrollLeft > 0 ? "1" : "0";
-    btnLeft.style.pointerEvents = scrollLeft > 0 ? "auto" : "none";
-    btnRight.style.opacity =
-      scrollLeft + clientWidth < scrollWidth - 1 ? "1" : "0";
-    btnRight.style.pointerEvents =
-      scrollLeft + clientWidth < scrollWidth - 1 ? "auto" : "none";
+
+    const atStart = scrollLeft <= 1;
+    const atEnd = scrollLeft + clientWidth >= scrollWidth - 1;
+
+    btnLeft.style.opacity = atStart ? "0" : "1";
+    btnLeft.style.pointerEvents = atStart ? "none" : "auto";
+
+    btnRight.style.opacity = atEnd ? "0" : "1";
+    btnRight.style.pointerEvents = atEnd ? "none" : "auto";
   };
 
   track.addEventListener("scroll", updateArrows);
