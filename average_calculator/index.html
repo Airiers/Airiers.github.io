@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="fr">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="src/style.css" />
+        <title>Calculateur de moyenne</title>
+    </head>
+    <script type="module" src="dist/app.js" defer></script>
+    <body>
+        <h1>Calculateur de moyenne</h1>
+        <form autocomplete="off">
+            <div class="add">
+                <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="20"
+                    name="note"
+                    id="note"
+                    placeholder="Entrez une note..."
+                />
+                <input
+                    type="number"
+                    step="0.01"
+                    min="0"
+                    max="20"
+                    name="noteOn"
+                    id="noteOn"
+                    placeholder="Entrez une valeur maximale..."
+                />
+                <input
+                    type="number"
+                    step="0.1"
+                    min="0"
+                    name="coef"
+                    id="coef"
+                    placeholder="Entrez une coefficient..."
+                />
+                <button type="button" id="addNote">Ajoutez une note</button>
+            </div>
+            <div class="import">
+                <input
+                    type="textarea"
+                    id="area"
+                    placeholder="Notes à importer"
+                />
+                <button type="button" id="import">Importer les notes</button>
+                <button type="button" id="export">Exporter les notes</button>
+            </div>
+        </form>
+        <h2>Moyenne : <span id="moyenne"></span></h2>
+        <section id="notes"></section>
+    </body>
+</html>
