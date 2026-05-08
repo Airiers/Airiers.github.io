@@ -115,10 +115,17 @@
     },
     {
         "title": "Actions editor — BBS tips",
-        "url": "https://www.youtube.com/watch?v=X4K_e4OmB0w&pp=0gcJCYcKAYcqIYzv",
+        "url": "https://www.youtube.com/watch?v=X4K_e4OmB0w",
         "author": "McHorse",
         "language": "EN"
     },
+    {
+        "title": "BBS Studio tutorial stream",
+        "url": "https://www.youtube.com/watch?v=BLuG55Pn2OM",
+        "author": "McHorse",
+        "language": "EN"
+    },
+
     {
         "title": "[TUTO FR] Faire des court métrages Minecraft - BBS Mod",
         "url": "https://www.youtube.com/watch?v=6RxVDG0akBk",
@@ -143,9 +150,16 @@
         "author": "Nioum",
         "language": "FR"
     },
+
     {
-        "title": "Why Everyone Is Using BBS Mod 🤯 | Full Tutorial ",
-        "url": "https://www.youtube.com/watch?v=5jKCcJC1yrk&pp=ygUQYmJzIG1vZCB0dXRvcmlhbA%3D%3D",
+        "title": "BBS Mod Camera Setup Nobody Talks About! 🤫 | GamerBhai",
+        "url": "https://www.youtube.com/watch?v=-Ml0NBL5MuI",
+        "author": "Game With Me - tips and tricks",
+        "language": "HI"
+    },
+    {
+        "title": "Why Everyone Is Using BBS Mod 🤯 | Full Tutorial",
+        "url": "https://www.youtube.com/watch?v=5jKCcJC1yrk",
         "author": "Game With Me - tips and tricks",
         "language": "HI"
     },
@@ -156,23 +170,12 @@
         "language": "HI"
     },
     {
-        "title": "How to Use Blockbuster Studio Mod - Learn BBS Mod Basics!",
-        "url": "https://www.youtube.com/watch?v=vciwOjCudws&pp=ygUQYmJzIG1vZCB0dXRvcmlhbA%3D%3D",
-        "author": "Zoxin Productions",
-        "language": "EN"
+        "title": "Master BBS Mod In Just 10 Minutes !!! | GamerBhai",
+        "url": "https://www.youtube.com/watch?v=LF_SBGwunJQ",
+        "author": "Game With Me - tips and tricks",
+        "language": "HI"
     },
-    {
-        "title": "(TUTORIAL) Como faço meus VÍDEOS? - mod BBS",
-        "url": "https://www.youtube.com/watch?v=m0BwepJ4liE&pp=ygUQYmJzIG1vZCB0dXRvcmlhbA%3D%3D",
-        "author": "SkeepLinked",
-        "language": "ES"
-    },
-    {
-        "title": "The Best Minecraft Mod You've Never Heard Of",
-        "url": "https://www.youtube.com/watch?v=-98YNxKoxlw&pp=ygUQYmJzIG1vZCB0dXRvcmlhbA%3D%3D",
-        "author": "Stromoto",
-        "language": "EN"
-    },
+
     {
         "title": "How to Render Videos on BBS Mod with FFmpeg on Android | Step-by-Step Tutorial",
         "url": "https://www.youtube.com/watch?v=QLB9jOeYAag",
@@ -183,6 +186,12 @@
         "title": "How to Install BBS Mod In Mobile || Mojo Launcher & pojavlauncher || 🤯💀",
         "url": "https://www.youtube.com/watch?v=iQxU51E-Z5E",
         "author": "MC HEROXX BRO",
+        "language": "EN"
+    },
+    {
+        "title": "How to Use Blockbuster Studio Mod - Learn BBS Mod Basics!",
+        "url": "https://www.youtube.com/watch?v=vciwOjCudws",
+        "author": "Zoxin Productions",
         "language": "EN"
     }
 ]
