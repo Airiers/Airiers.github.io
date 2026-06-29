@@ -54,6 +54,12 @@ body {
     align-items: flex-start;
 }
 
+.warning {
+    align-self: center;
+    font-weight: 500;
+    text-decoration: underline;
+}
+
 .iframe_container {
     position: relative;
     width: 100%;
@@ -112,6 +118,10 @@ button:hover {
 }
 button:active {
     background-color: #5e5e5e;
+}
+
+li {
+    list-style-type: none;
 }
 
 .grid {
