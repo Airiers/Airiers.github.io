@@ -14,56 +14,161 @@
         .main a {
             text-decoration: none;
             color: rgb(0, 145, 212);
-            font-size:20px
+            font-size: 20px;
         }
 
         .main li {
-            list-style: none
+            list-style: none;
+        }
+
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 24px;
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 20px;
+        }
+
+        .gallery-card {
+            overflow: hidden;
+            display: block;
+            color: inherit;
+            text-decoration: none;
+            background: #fff;
+            border-radius: 16px;
+            border: 1px solid #ddd;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            transition:
+                transform 0.25s ease,
+                box-shadow 0.25s ease;
+        }
+
+        .gallery-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 14px 30px rgba(0, 0, 0, 0.18);
+        }
+
+        .gallery-card img {
+            display: block;
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .gallery-content {
+            padding: 20px;
+        }
+
+        .gallery-content h2 {
+            margin: 0 0 8px;
+            font-size: 1.25rem;
+        }
+
+        .gallery-content p {
+            margin: 0;
+            color: #666;
+            line-height: 1.5;
+        }
+
+        .gallery-card img {
+            transition: transform 0.4s ease;
+        }
+
+        .gallery-card:hover img {
+            transform: scale(1.08);
         }
     </style>
     <body>
         <div class="main">
             <h1>Welcome to Airiers space</h1>
             <p>Here some of my experiments :</p>
-            <ul>
-                <li>
-                    <p><a href="/pokedex/who.html">Who's that Pokémon ?</a></p>
-                    <p>An iconic game online</p>
-                </li>
-                <li>
-                    <p><a href="/Guess-the-country">Guess the country with flags</a></p>
-                    <p>Geography cool game</p>
-                </li>
-                <li>
-                    <p><a href="/generative">Generative</a></p>
-                    <p>A time travel</p>
-                </li>
-                <li>
-                    <p><a href="/CiteMe/">CiteMe</a></p>
-                    <p>Smart citation every click</p>
-                </li>
-                <li>
-                    <p><a href="/googleisyourfriend/?q=type+what+you+want">Google is your Friend</a></p>
-                    <p>For people who never stop asking questions</p>
-                </li>
-                <li>
-                    <p><a href="/spend-scrooge-mcduck-money/">Spend Scrooge McDuck money</a></p>
-                    <p>Like the famous game on neal.fun, but even crazier</p>
-                </li>
-                <li>
-                    <p><a href="/bbs-doc">BBS MOD Wiki</a></p>
-                    <p>All the tutorials in one place</p>
-                </li>
-                <li>
-                    <p><a href="/cornscore/">CornScore</a></p>
-                    <p>Every movies you can imagine, in a smooth interface</p>
-                </li>
-                <li>
-                    <p><a href="/average_calculator/">Average Calculator</a></p>
-                    <p>For caculate your grades</p>
-                </li>
-                </li>
-            </ul>
+            <div class="gallery">
+                <a class="gallery-card" href="/pokedex/who.html">
+                    <img src="/images/wtp.png" alt="Who's that Pokémon ?" />
+                    <div class="gallery-content">
+                        <h2>Who's that Pokémon ?</h2>
+                        <p>An iconic game online</p>
+                    </div>
+                </a>
+
+                <a class="gallery-card" href="/Guess-the-country">
+                    <img
+                        src="/images/gcf.png"
+                        alt="Guess the country with flags"
+                    />
+                    <div class="gallery-content">
+                        <h2>Guess the country with flags</h2>
+                        <p>Geography cool game</p>
+                    </div>
+                </a>
+
+                <a class="gallery-card" href="/generative">
+                    <img src="/images/gen.png" alt="Generative" />
+                    <div class="gallery-content">
+                        <h2>Generative</h2>
+                        <p>A time travel</p>
+                    </div>
+                </a>
+
+                <a class="gallery-card" href="/CiteMe/">
+                    <img src="/images/cit.png" alt="CiteMe" />
+                    <div class="gallery-content">
+                        <h2>CiteMe</h2>
+                        <p>Smart citation every click</p>
+                    </div>
+                </a>
+
+                <a
+                    class="gallery-card"
+                    href="/googleisyourfriend/?q=type+what+you+want"
+                >
+                    <img src="/images/goo.png" alt="Google is your Friend" />
+                    <div class="gallery-content">
+                        <h2>Google is your Friend</h2>
+                        <p>For people who never stop asking questions</p>
+                    </div>
+                </a>
+
+                <a class="gallery-card" href="/spend-scrooge-mcduck-money/">
+                    <img
+                        src="/images/ssm.png"
+                        alt="Spend Scrooge McDuck money"
+                    />
+                    <div class="gallery-content">
+                        <h2>Spend Scrooge McDuck money</h2>
+                        <p>
+                            Like the famous game on neal.fun, but even crazier
+                        </p>
+                    </div>
+                </a>
+
+                <a class="gallery-card" href="/bbs-doc">
+                    <img src="/images/bbs.png" alt="BBS MOD Wiki" />
+                    <div class="gallery-content">
+                        <h2>BBS MOD Wiki</h2>
+                        <p>All the tutorials in one place</p>
+                    </div>
+                </a>
+
+                <a class="gallery-card" href="/cornscore/">
+                    <img src="/images/cor.png" alt="CornScore" />
+                    <div class="gallery-content">
+                        <h2>CornScore</h2>
+                        <p>
+                            Every movie you can imagine, in a smooth interface
+                        </p>
+                    </div>
+                </a>
+
+                <a class="gallery-card" href="/average_calculator/">
+                    <img src="/images/moy.png" alt="Average Calculator" />
+                    <div class="gallery-content">
+                        <h2>Average Calculator</h2>
+                        <p>For calculating your grades</p>
+                    </div>
+                </a>
+            </div>
         </div>
     </body>
 </html>
